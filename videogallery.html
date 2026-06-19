@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>वीडियो गैलरी | डॉ. आराधना डिजिटल विरासत</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .video-box {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #fffaf0, #fff2d8);
+      border: 4px solid rgba(201,162,39,0.45);
+      box-shadow: 0 18px 45px rgba(92,31,31,0.18);
+    }
+
+    video {
+      width: 100%;
+      max-height: 620px;
+      border-radius: 22px;
+      background: #000;
+    }
+
+    .video-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #7a1f1f;
+      margin: 18px 0;
+    }
+
+    .video-controls {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .counter {
+      font-weight: bold;
+      color: #7a1f1f;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="floating-world">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<header>
+  <nav>
+    <h1>वीडियो गैलरी</h1>
+    <ul>
+      <li><a href="index.html">🏠 होम</a></li>
+      <li><a href="family.html">👨‍👩‍👧‍👦 परिवार</a></li>
+      <li><a href="gallery.html">🖼️ गैलरी</a></li>
+      <li><a href="travel.html">🌍 यात्राएँ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="section">
+  <h2>🎥 स्मृतियों की वीडियो गैलरी</h2>
+  <p>
+    इन वीडियो स्मृतियों में परिवार, यात्राएँ, विशेष क्षण और जीवन की सुंदर यादें संजोई गई हैं।
+  </p>
+
+  <div class="video-box">
+    <div class="video-title" id="videoTitle">वीडियो स्मृति 1</div>
+
+    <video id="mainVideo" controls playsinline>
+      <source src="video-1.mp4.mp4" type="video/mp4">
+      आपका browser video support नहीं करता।
+    </video>
+
+    <div class="counter" id="counter">1 / 30</div>
+
+    <div class="video-controls">
+      <button class="btn" onclick="prevVideo()">⬅️ Previous</button>
+      <button class="btn" onclick="nextVideo()">Next ➡️</button>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <h2>वीडियो स्मृतियों का महत्व</h2>
+  <p>
+    तस्वीरें क्षणों को रोकती हैं, लेकिन वीडियो उन क्षणों की आवाज़, भाव और जीवन्तता को भी सहेज लेते हैं।
+  </p>
+
+  <div class="hero-buttons">
+    <a href="index.html" class="btn">🏠 होम पर जाएँ</a>
+    <a href="family.html" class="btn">👨‍👩‍👧‍👦 परिवार अनुभाग</a>
+    <a href="gallery.html" class="btn">🖼️ फोटो गैलरी</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>वीडियो गैलरी | डॉ. आराधना डिजिटल विरासत संग्रह</p>
+</footer>
+
+<script>
+  const videos = [
+    "video-1.mp4.mp4",
+    "video-2.mp4.mp4",
+    "video-3.mp4.mp4",
+    "video-4.mp4.mp4",
+    "video-5.mp4.mp4",
+    "video-6.mp4.mp4",
+    "video-7.mp4.mp4",
+    "video-8.mp4.mp4",
+    "video-9.mp4.mp4",
+    "video-10.mp4.mp4",
+    "video-11.mp4.mp4",
+    "video-12.mp4.mp4",
+    "video-13.mp4.mp4",
+    "video-14.mp4.mp4",
+    "video-15.mp4.mp4",
+    "video-16.mp4.mp4",
+    "video-17.mp4.mp4",
+    "video-18.mp4.mp4",
+    "video-19.mp4.mp4",
+    "video-20.mp4.mp4",
+    "video-21.mp4.mp4",
+    "video-22.mp4.mp4",
+    "video-23.mp4.mp4",
+    "video-24.mp4.mp4",
+    "video-25.mp4.mp4",
+    "video-26.mp4.mp4",
+    "video-27.mp4.mp4",
+    "video-28.mp4.mp4",
+    "video-29.mp4.mp4",
+    "video-30.mp4.mp4"
+  ];
+
+  let currentVideo = 0;
+
+  const mainVideo = document.getElementById("mainVideo");
+  const videoTitle = document.getElementById("videoTitle");
+  const counter = document.getElementById("counter");
+
+  function updateVideo() {
+    mainVideo.pause();
+    mainVideo.src = videos[currentVideo];
+    mainVideo.load();
+
+    videoTitle.textContent = "वीडियो स्मृति " + (currentVideo + 1);
+    counter.textContent = (currentVideo + 1) + " / " + videos.length;
+  }
+
+  function nextVideo() {
+    currentVideo = (currentVideo + 1) % videos.length;
+    updateVideo();
+  }
+
+  function prevVideo() {
+    currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+    updateVideo();
+  }
+</script>
+
+</body>
+  </html>
