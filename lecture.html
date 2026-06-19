@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>मेरा अगला Lecture | डॉ. आराधना डिजिटल विरासत</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .lecture-panel {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #fffaf0, #fff2d8);
+      border: 4px solid rgba(201,162,39,0.45);
+      box-shadow: 0 18px 45px rgba(92,31,31,0.18);
+    }
+
+    .lecture-panel input {
+      width: 100%;
+      max-width: 360px;
+      padding: 15px;
+      border-radius: 14px;
+      border: 2px solid #7a1f1f;
+      font-size: 17px;
+      margin: 15px;
+      text-align: center;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .topic-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff8ec;
+      border: 2px solid rgba(201,162,39,0.35);
+      font-weight: bold;
+      color: #7a1f1f;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(135deg, #c9a227, #7a1f1f);
+      color: white;
+    }
+
+    .lecture-output {
+      margin-top: 28px;
+      padding: 25px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.8);
+      border-left: 6px solid #c9a227;
+      font-size: 20px;
+      line-height: 1.9;
+      color: #4a2518;
+      display: none;
+    }
+
+    .locked-note {
+      font-weight: bold;
+      color: #7a1f1f;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="floating-world">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<header>
+  <nav>
+    <h1>मेरा अगला Lecture</h1>
+    <ul>
+      <li><a href="index.html">🏠 होम</a></li>
+      <li><a href="family.html">👨‍👩‍👧‍👦 परिवार</a></li>
+      <li><a href="aryasamaj.html">🕉️ आर्य समाज</a></li>
+      <li><a href="gallery.html">🖼️ गैलरी</a></li>
+      <li><a href="videogallery.html">🎥 वीडियो</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="section soft">
+  <h2>🎤 मेरा अगला Lecture</h2>
+  <p>
+    यह अनुभाग डॉ. आराधना मैम के भविष्य के प्रेरणादायक व्याख्यानों के लिए बनाया गया है।
+  </p>
+
+  <div class="lecture-panel" id="lockBox">
+    <p class="locked-note">इस section को खोलने के लिए password डालें।</p>
+
+    <input type="password" id="passwordInput" placeholder="Password डालें" />
+
+    <br>
+    <button class="btn" onclick="unlockLecture()">Unlock Lecture Section</button>
+  </div>
+
+  <div class="lecture-panel" id="lectureBox" style="display:none;">
+    <h2>Lecture Topics</h2>
+    <p>किसी भी topic पर click करें या random lecture generate करें।</p>
+
+    <button class="btn" onclick="generateRandomLecture()">✨ Random Lecture Topic</button>
+
+    <div class="topic-grid">
+      <div class="topic-card" onclick="showLecture('आर्य समाज')">🕉️ आर्य समाज</div>
+      <div class="topic-card" onclick="showLecture('योग')">🧘 योग</div>
+      <div class="topic-card" onclick="showLecture('भगवान राम')">🏹 भगवान राम</div>
+      <div class="topic-card" onclick="showLecture('भगवान कृष्ण')">🪈 भगवान कृष्ण</div>
+      <div class="topic-card" onclick="showLecture('वेदांत')">📖 वेदांत</div>
+      <div class="topic-card" onclick="showLecture('उपनिषद')">📚 उपनिषद</div>
+      <div class="topic-card" onclick="showLecture('अच्छी आदतें')">🌸 अच्छी आदतें</div>
+      <div class="topic-card" onclick="showLecture('शिक्षा')">🎓 शिक्षा</div>
+      <div class="topic-card" onclick="showLecture('महापुरुष')">🌟 महापुरुष</div>
+      <div class="topic-card" onclick="showLecture('स्वतंत्रता सेनानी')">🇮🇳 स्वतंत्रता सेनानी</div>
+      <div class="topic-card" onclick="showLecture('भारतीय संस्कृति')">🪔 भारतीय संस्कृति</div>
+      <div class="topic-card" onclick="showLecture('नारी सशक्तिकरण')">💪 नारी सशक्तिकरण</div>
+    </div>
+
+    <div class="lecture-output" id="lectureOutput"></div>
+  </div>
+</section>
+
+<section class="section family-world">
+  <h2>व्याख्यान का उद्देश्य</h2>
+  <p>
+    इस अनुभाग का उद्देश्य ज्ञान, संस्कार, वैदिक विचार, भारतीय संस्कृति और नैतिक मूल्यों को सरल भाषा में प्रस्तुत करना है।
+  </p>
+
+  <div class="hero-buttons">
+    <a href="index.html" class="btn">🏠 होम पर जाएँ</a>
+    <a href="family.html" class="btn">👨‍👩‍👧‍👦 परिवार</a>
+    <a href="aryasamaj.html" class="btn">🕉️ आर्य समाज</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>मेरा अगला Lecture | डॉ. आराधना डिजिटल विरासत संग्रह</p>
+</footer>
+
+<script>
+  const correctPassword = "1234";
+
+  const lectureTexts = {
+    "आर्य समाज": "आर्य समाज सत्य, वेद, यज्ञ और समाज सुधार की प्रेरणा देता है। यह हमें अंधविश्वास से दूर रहकर तर्क, शिक्षा और मानवता के मार्ग पर चलना सिखाता है।",
+    "योग": "योग केवल शरीर को स्वस्थ रखने का साधन नहीं, बल्कि मन, बुद्धि और आत्मा को संतुलित करने की जीवन पद्धति है।",
+    "भगवान राम": "भगवान राम मर्यादा, कर्तव्य, त्याग और आदर्श जीवन के प्रतीक हैं। उनका जीवन हमें संयम और धर्म का मार्ग सिखाता है।",
+    "भगवान कृष्ण": "भगवान कृष्ण का जीवन कर्म, ज्ञान, प्रेम और नीति का अद्भुत संगम है। गीता का संदेश आज भी जीवन का मार्गदर्शन करता है।",
+    "वेदांत": "वेदांत हमें आत्मा, ब्रह्म और जीवन के गहरे सत्य को समझने की प्रेरणा देता है।",
+    "उपनिषद": "उपनिषद भारतीय ज्ञान परंपरा की अमूल्य धरोहर हैं। वे हमें आत्मचिंतन और सत्य की खोज का मार्ग बताते हैं।",
+    "अच्छी आदतें": "अच्छी आदतें व्यक्ति के चरित्र की नींव होती हैं। समय का पालन, सत्य बोलना, अनुशासन और सेवा जीवन को श्रेष्ठ बनाते हैं।",
+    "शिक्षा": "शिक्षा केवल डिग्री नहीं, बल्कि जीवन को समझने, समाज को सुधारने और व्यक्तित्व को विकसित करने का साधन है।",
+    "महापुरुष": "महापुरुषों का जीवन संघर्ष, त्याग और आदर्शों से भरा होता है। उनसे प्रेरणा लेकर हम अपने जीवन को श्रेष्ठ बना सकते हैं।",
+    "स्वतंत्रता सेनानी": "स्वतंत्रता सेनानियों ने अपने जीवन का बलिदान देकर हमें स्वतंत्र भारत दिया। उनका स्मरण हमें राष्ट्रसेवा की प्रेरणा देता है।",
+    "भारतीय संस्कृति": "भारतीय संस्कृति परिवार, संस्कार, सहिष्णुता, आध्यात्मिकता और मानवता की महान परंपरा है।",
+    "नारी सशक्तिकरण": "नारी शक्ति, संवेदना, ज्ञान और नेतृत्व की प्रतीक है। समाज की प्रगति में नारी की भूमिका अत्यंत महत्वपूर्ण है।"
+  };
+
+  function unlockLecture() {
+
+const input =
+document.getElementById("passwordInput").value.trim();
+
+if (
+input === "Harshit" ||
+input === "harshit"
+) {
+
+document.getElementById("lockBox").style.display = "none";
+document.getElementById("lectureBox").style.display = "block";
+
+} else {
+
+alert("गलत Password. कृपया पुनः प्रयास करें।");
+
+}
+  }
+
+  function showLecture(topic) {
+    const output = document.getElementById("lectureOutput");
+    output.style.display = "block";
+    output.innerHTML = "<strong>आज का विषय: " + topic + "</strong><br><br>" + lectureTexts[topic];
+  }
+
+  function generateRandomLecture() {
+    const topics = Object.keys(lectureTexts);
+    const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+    showLecture(randomTopic);
+  }
+</script>
+
+</body>
+</html>
