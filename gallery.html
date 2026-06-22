@@ -97,7 +97,7 @@ onclick="openFullscreen()"
 >
 
 <div class="counter" id="counter">
-1 / 20
+1 / 94
 </div>
 
 <div class="gallery-buttons">
@@ -136,30 +136,11 @@ Next ➡
 
 <script>
 
-const images = [
+const images = [];
 
-"gallery-1.jpg.jpg",
-"gallery-2.jpg.jpg",
-"gallery-3.jpg.jpg",
-"gallery-4.jpg.jpg",
-"gallery-5.jpg.jpg",
-"gallery-6.jpg.jpg",
-"gallery-7.jpg.jpg",
-"gallery-8.jpg.jpg",
-"gallery-9.jpg.jpg",
-"gallery-10.jpg.jpg",
-"gallery-11.jpg.jpg",
-"gallery-12.jpg.jpg",
-"gallery-13.jpg.jpg",
-"gallery-14.jpg.jpg",
-"gallery-15.jpg.jpg",
-"gallery-16.jpg.jpg",
-"gallery-17.jpg.jpg",
-"gallery-18.jpg.jpg",
-"gallery-19.jpg.jpg",
-"gallery-20.jpg.jpg"
-
-];
+for(let i = 1; i <= 94; i++){
+images.push(`gallery-${i}.jpg.jpg`);
+}
 
 let currentIndex = 0;
 
