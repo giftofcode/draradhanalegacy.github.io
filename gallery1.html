@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>विशेष स्मृति गैलरी 1 | डॉ. आराधना</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.gallery-container{
+max-width:1000px;
+margin:40px auto;
+padding:20px;
+text-align:center;
+}
+
+.gallery-image{
+width:100%;
+max-height:700px;
+object-fit:contain;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+cursor:pointer;
+transition:.4s;
+background:white;
+}
+
+.gallery-image:hover{
+transform:scale(1.01);
+}
+
+.gallery-title{
+font-size:2rem;
+margin-bottom:20px;
+color:#7a1f1f;
+font-weight:bold;
+}
+
+.counter{
+font-size:1.2rem;
+font-weight:bold;
+margin:20px 0;
+color:#7a1f1f;
+}
+
+.gallery-buttons,
+.home-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+@media(max-width:768px){
+.gallery-image{
+max-height:520px;
+}
+.gallery-title{
+font-size:1.5rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h1>विशेष स्मृति गैलरी 1</h1>
+</nav>
+</header>
+
+<section class="gallery-container">
+
+<div class="gallery-title">
+📸 डॉ. आराधना विशेष स्मृतियाँ — भाग 1
+</div>
+
+<img id="galleryImage" class="gallery-image" src="gallery-1.jpg.jpg" alt="Gallery Image" onclick="openFullscreen()">
+
+<div class="counter" id="counter">1 / 40</div>
+
+<div class="gallery-buttons">
+<button class="btn" onclick="previousImage()">⬅ Previous</button>
+<button class="btn" onclick="nextImage()">Next ➡</button>
+<a href="gallery2.html" class="btn">📸 More Memories →</a>
+</div>
+
+<div class="home-buttons">
+<a href="index.html" class="btn">🏠 Home</a>
+<a href="family.html" class="btn">👨‍👩‍👧‍👦 Family</a>
+<a href="travel.html" class="btn">🌍 Travel</a>
+<a href="videogallery.html" class="btn">🎥 Videos</a>
+</div>
+
+</section>
+
+<script>
+const images = [];
+
+for(let i = 1; i <= 40; i++){
+images.push(`gallery-${i}.jpg.jpg`);
+}
+
+let currentIndex = 0;
+
+function updateGallery(){
+document.getElementById("galleryImage").src = images[currentIndex];
+document.getElementById("counter").innerHTML =
+(currentIndex + 1) + " / " + images.length;
+}
+
+function nextImage(){
+currentIndex++;
+if(currentIndex >= images.length){
+currentIndex = 0;
+}
+updateGallery();
+}
+
+function previousImage(){
+currentIndex--;
+if(currentIndex < 0){
+currentIndex = images.length - 1;
+}
+updateGallery();
+}
+
+function openFullscreen(){
+const img = document.getElementById("galleryImage");
+if(img.requestFullscreen){
+img.requestFullscreen();
+}
+}
+</script>
+
+</body>
+</html>
