@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>विशेष स्मृति गैलरी | डॉ. आराधना</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.gallery-container{
+max-width:1000px;
+margin:40px auto;
+padding:20px;
+text-align:center;
+}
+
+.gallery-image{
+width:100%;
+max-height:700px;
+object-fit:contain;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+cursor:pointer;
+transition:.4s;
+background:white;
+}
+
+.gallery-title{
+font-size:2rem;
+margin-bottom:20px;
+color:#7a1f1f;
+font-weight:bold;
+}
+
+.counter{
+font-size:1.2rem;
+font-weight:bold;
+margin:20px 0;
+color:#7a1f1f;
+}
+
+.gallery-buttons,
+.home-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+@media(max-width:768px){
+.gallery-image{
+max-height:520px;
+}
+.gallery-title{
+font-size:1.5rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h1>विशेष स्मृति गैलरी</h1>
+</nav>
+</header>
+
+<section class="gallery-container">
+
+<div class="gallery-title">
+📸 डॉ. आराधना विशेष स्मृतियाँ
+</div>
+
+<img id="galleryImage" class="gallery-image" src="gallery-1.jpg.jpg" alt="Gallery Image" onclick="openFullscreen()">
+
+<div class="counter" id="counter">1 / 30</div>
+
+<div class="gallery-buttons">
+<button class="btn" onclick="previousImage()">⬅ Previous</button>
+<button class="btn" onclick="nextImage()">Next ➡</button>
+</div>
+
+<div class="home-buttons">
+<a href="index.html" class="btn">🏠 Home</a>
+<a href="family.html" class="btn">👨‍👩‍👧‍👦 Family</a>
+<a href="travel.html" class="btn">🌍 Travel</a>
+<a href="videogallery.html" class="btn">🎥 Videos</a>
+</div>
+
+</section>
+
+<script>
+const images = [
+"gallery-1.jpg.jpg",
+"gallery-2.jpg.jpg",
+"gallery-3.jpg.jpg",
+"gallery-4.jpg.jpg",
+"gallery-5.jpg.jpg",
+"gallery-6.jpg.jpg",
+"gallery-7.jpg.jpg",
+"gallery-8.jpg.jpg",
+"gallery-9.jpg.jpg",
+"gallery-10.jpg.jpg",
+"gallery-11.jpg.jpg",
+"gallery-12.jpg.jpg",
+"gallery-13.jpg.jpg",
+"gallery-14.jpg.jpg",
+"gallery-15.jpg.jpg",
+"gallery-16.jpg.jpg",
+"gallery-17.jpg.jpg",
+"gallery-18.jpg.jpg",
+"gallery-19.jpg.jpg",
+"gallery-20.jpg.jpg",
+"gallery-21.jpg.jpg",
+"gallery-22.jpg.jpg",
+"gallery-23.jpg.jpg",
+"gallery-24.jpg.jpg",
+"gallery-25.jpg.jpg",
+"gallery-26.jpg.jpg",
+"gallery-27.jpg.jpg",
+"gallery-28.jpg.jpg",
+"gallery-29.jpg.jpg",
+"gallery-30.jpg.jpg"
+];
+
+let currentIndex = 0;
+
+function updateGallery(){
+document.getElementById("galleryImage").src = images[currentIndex];
+document.getElementById("counter").innerHTML =
+(currentIndex + 1) + " / " + images.length;
+}
+
+function nextImage(){
+currentIndex++;
+if(currentIndex >= images.length){
+currentIndex = 0;
+}
+updateGallery();
+}
+
+function previousImage(){
+currentIndex--;
+if(currentIndex < 0){
+currentIndex = images.length - 1;
+}
+updateGallery();
+}
+
+function openFullscreen(){
+const img = document.getElementById("galleryImage");
+if(img.requestFullscreen){
+img.requestFullscreen();
+}
+}
+</script>
+
+</body>
+</html>
