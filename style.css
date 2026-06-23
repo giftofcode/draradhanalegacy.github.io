@@ -564,3 +564,53 @@ footer {
     height: 420px;
   }
 }
+.hero-qr-box {
+  max-width: 360px;
+  margin: 35px auto 0;
+  padding: 24px;
+  text-align: center;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #fff8ec, #ffe9bd);
+  border: 3px solid rgba(201, 162, 39, 0.7);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+}
+
+.hero-qr-box h3 {
+  color: #7a1f1f;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.hero-qr-box p {
+  color: #5c1f1f;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.hero-qr-box img {
+  width: 250px;
+  max-width: 92%;
+  background: white;
+  padding: 12px;
+  border-radius: 18px;
+  border: 2px solid rgba(0,0,0,0.12);
+}
+
+.hero-qr-box span {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #7a1f1f;
+}
+
+@media (max-width: 768px) {
+  .hero-qr-box {
+    max-width: 88%;
+    padding: 20px;
+  }
+
+  .hero-qr-box img {
+    width: 220px;
+  }
+}
